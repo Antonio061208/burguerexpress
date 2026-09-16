@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burguer Express Riversul | Hambúrgueres & Mobilidade</title>
+    <!-- Ícones e Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        /* Header */
+        header {
+            background-color: #1f1f1f;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: #ff4757;
+        }
+
+        .logo span {
+            color: #ffa502;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff4757;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .hero h1 span {
+            color: #ff4757;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+
+        .btn {
+            background-color: #ff4757;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background-color: #e84118;
+            transform: translateY(-3px);
+        }
+
+        .btn-alt {
+            background-color: #ffa502;
+            box-shadow: 0 5px 15px rgba(255, 165, 2, 0.4);
+        }
+
+        .btn-alt:hover {
+            background-color: #ff7f50;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 10%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            background-color: #181818;
+        }
+
+        .card {
+            background-color: #222;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+            border-bottom: 4px solid #ff4757;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card i {
+            font-size: 50px;
+            color: #ff4757;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #aaa;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 80px 10%;
+            background-color: #151515;
+            text-align: center;
+        }
+
+        .gallery-section h2 {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .gallery-section p.subtitle {
+            color: #aaa;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            height: 250px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            color: #fff;
+            padding: 20px 15px 15px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            text-align: left;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 10%;
+            text-align: center;
+            background-color: #121212;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #ccc;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Team Section / Founders */
+        .team {
+            padding: 80px 10%;
+            background-color: #181818;
+            text-align: center;
+        }
+
+        .team h2 {
+            font-size: 2.3rem;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background-color: #222;
+            padding: 35px 25px;
+            border-radius: 15px;
+            border-top: 4px solid #ffa502;
+            transition: transform 0.3s;
+            text-align: left;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-card i {
+            font-size: 32px;
+            color: #ffa502;
+            margin-bottom: 15px;
+        }
+
+        .team-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .team-card .role {
+            font-size: 0.9rem;
+            color: #ff4757;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .team-card p {
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0d0d0d;
+            text-align: center;
+            padding: 30px;
+            color: #777;
+            border-top: 1px solid #222;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            nav {
+                display: none; /* Simplificado para mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="logo">Burguer Express <span>Riversul</span></div>
+        <nav>
+            <a href="#home">Início</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#galeria">Galeria</a>
+            <a href="#sobre">Sobre Nós</a>
+            <a href="#equipe">Equipe</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <!-- Seção Principal (Hero) -->
+    <section class="hero" id="home">
+        <h1>Sabor e Mobilidade em <span>Riversul</span></h1>
+        <p>Combinamos o melhor hambúrguer artesanal da região com a inovação de um aplicativo de mobilidade ágil e eficiente para você.</p>
+        <div>
+            <a href="#servicos" class="btn">Pedir Hambúrguer</a>
+            <a href="#servicos" class="btn btn-alt">Baixar Aplicativo</a>
+        </div>
+    </section>
+
+    <!-- Seção de Serviços / Pilares -->
+    <section class="services" id="servicos">
+        <div class="card">
+            <i class="fas fa-hamburger"></i>
+            <h3>Burguer Artesanal</h3>
+            <p>Hambúrgueres suculentos, feitos com ingredientes selecionados, pão fresco e carnes da mais alta qualidade para saciar sua fome.</p>
+        </div>
+        <div class="card" style="border-bottom-color: #ffa502;">
+            <i class="fas fa-car"></i>
+            <h3>Mobilidade Urbana</h3>
+            <p>Precisa se deslocar por Riversul e região? Nosso aplicativo de mobilidade conecta você a motoristas seguros e rápidos com apenas um toque.</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-motorcycle"></i>
+            <h3>Entrega Expressa</h3>
+            <p>Logística inteligente integrada! O seu lanche chega quentinho e rápido na sua porta através da nossa frota dedicada.</p>
+        </div>
+    </section>
+
+    <!-- Seção de Galeria de Imagens -->
+    <section class="gallery-section" id="galeria">
+        <h2>Vivencie a Experiência</h2>
+        <p class="subtitle">Um pouco do que preparamos para o seu dia a dia em Riversul</p>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80" alt="Hambúrguer Artesanal">
+                <div class="gallery-caption">Hambúrgueres Suculentos</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=800&q=80" alt="Mobilidade Urbana e Viagens">
+                <div class="gallery-caption">Mobilidade Ágil</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1526367790999-0150786686a2?auto=format&fit=crop&w=800&q=80" alt="Entrega Rápida">
+                <div class="gallery-caption">Entrega Expressa</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre a Empresa -->
+    <section class="about" id="sobre">
+        <h2>Inovação que Conecta Riversul</h2>
+        <p>A <strong>Burguer Express Riversul</strong> nasceu para transformar a experiência da nossa cidade. Não somos apenas uma hamburgueria de excelência, mas também uma plataforma de tecnologia voltada à mobilidade urbana e entregas rápidas. Tudo o que você precisa, na palma da sua mão.</p>
+    </section>
+
+    <!-- Seção de Equipe / Fundadores -->
+    <section class="team" id="equipe">
+        <h2>Quem Faz Acontecer</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <i class="fas fa-utensils"></i>
+                <h3>Antonio Fabio de Sousa Pereira</h3>
+                <span class="role">Chef & Operações de Chapa</span>
+                <p>Mestre à frente da criação de receitas exclusivas e do rigor técnico na preparação de cada hambúrguer artesanal.</p>
+            </div>
+            <div class="team-card" style="border-top-color: #ff4757;">
+                <i class="fas fa-chart-line"></i>
+                <h3>Emilly Vilela Prado & Jaqueline de Fatima dos Santos</h3>
+                <span class="role">Marketing, Gestão Financeira & Logística</span>
+                <p>Responsáveis pela estratégia de expansão da marca, planejamento financeiro e otimização da cadeia de entregas.</p>
+            </div>
+            <div class="team-card" style="border-top-color: #3498db;">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Prof. Felipe Mercês Biglia</h3>
+                <span class="role">Orientador & Cliente VIP</span>
+                <p>Mentor técnico e acadêmico do projeto, garantindo a excelência estratégica e a curadoria oficial (com direito a degustação garantida).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer id="contato">
+        <p>&copy; 2026 Burguer Express Riversul. Todos os direitos reservados.</p>
+        <p style="margin-top: 10px; font-size: 14px;">Tecnologia e Sabor em um só lugar.</p>
+    </footer>
+
+</body>
+</html>
